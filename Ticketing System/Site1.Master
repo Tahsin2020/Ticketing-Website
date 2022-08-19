@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Ticketing_System.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    
+    <%--bootstrap css--%>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <%--datatables css--%>
+    <link href="cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+        <%--our custom css--%>
+    <link href="css/customstylesheet.css" rel="stylesheet" />
+    <link href="css/StyleSheet1.css" rel="stylesheet" />
+
+    <%---datables js---%>
+    <script src="cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+    <%--fontawesome js--%>
+    <script src="https://kit.fontawesome.com/6e177b7307.js" crossorigin="anonymous"></script>
+    <%--jquery--%>
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <%--popper js--%>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <%--bootstrap js--%>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("mydiv").offsetWidth
+        window.addEventListener("click", function () {
+            var div = document.createElement('div'); // this will create an element
+            div.style.border = '1px solid #000'; // add this so you'll see a black border appearing
+            document.body.appendChild(div); // This will apend the div element to the body
+
+        })
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color:	rgb(24,24,24)">
+      <form runat="server" id="form1">
+          <asp:Panel id="Panel1" runat="server" Visible="true" style="background-color: black;">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div style="color:white;">
+               <a class="navbar-brand" href="Bubbles.aspx" style="color:white;">
+               YourLife
+               </a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button></div>
+               <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="Goal-Setting.aspx" style="color:white;">Goals</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="Tickets.aspx" style="color:white;">Tickets</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="Finances.aspx" style="color:white;">Finances</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </asp:Panel>
+    <asp:Panel id="Panel3" runat="server" Visible="true" style="position:fixed; right:10px; top:38px;background-color:black; color: white;">Select an Item, Click Minus to Delete It</asp:Panel>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:con %>" SelectCommand="SELECT * FROM [Goal_Table]"></asp:SqlDataSource>
+    <asp:DropDownList ID="DropDownList1" runat="server" 
+         DataTextField="Title"
+         AutoPostBack="True"
+         DataSourceID="SqlDataSource1" style="position:fixed; right:10px; top:10px;">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:con %>" SelectCommand="SELECT * FROM [Ticket_Table]"></asp:SqlDataSource>
+    <asp:DropDownList ID="DropDownList2" runat="server" 
+
+         DataTextField="Title"
+         AutoPostBack="True"
+         DataSourceID="SqlDataSource2" style="position:fixed; right:10px; top:10px;">
+    </asp:DropDownList>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+          <asp:Panel id="Panel2" runat="server" style="position: fixed;right:0;bottom:0;" Visible="true">
+                    <asp:ImageButton id="imagebutton1" runat="server"
+           AlternateText="ImageButton 1"
+           ImageAlign="left"
+           ImageUrl="img/plus_2.png"
+           OnClick="ImageButton_Click"  style="height : 100px;margin:20px;"/>
+                    <asp:ImageButton id="imagebutton2" runat="server"
+           AlternateText="ImageButton 2"
+           ImageAlign="left"
+           ImageUrl="img/pencil.png"
+           OnClick="ImageButton_Click1" style="height : 100px;margin:20px;"/>
+                    <asp:ImageButton id="imagebutton3" runat="server"
+           AlternateText="ImageButton 3"
+           ImageAlign="left"
+           ImageUrl="img/minus_2.png"
+           OnClick="ImageButton_Click2" style="height : 100px;margin:20px;"/>
+          </asp:Panel>
+      </form>
+</body>
+</html>
