@@ -1,5 +1,5 @@
 # Ticketing-Website
-Demo Project for display to stakeholders.
+Demo Project for display to stakeholders and fellow co-workers/colleagues.
 
 You have to change the settings and put your own database here to make it work. It displays tickets, goals, etc.
 
